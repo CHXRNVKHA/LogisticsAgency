@@ -1,4 +1,4 @@
-const service = require('../services/cargo-service');
+const service = require('../services/cargo-sevice');
 class CargoController {
     constructor(){};
     addCargo = async (req, res) => {
