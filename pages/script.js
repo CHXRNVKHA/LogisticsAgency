@@ -78,7 +78,7 @@ const updateCargo = async function (event) {
         const cargoWeight = form.elements['weight'].value;
         const cargoId = targetRow.cells[0].innerText;
         targetRow.cells[1].innerText = cargoWeight;
-        const response = await fetch('/cargo/edit', {
+        const response = await fetch('/cargo/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
@@ -91,19 +91,19 @@ const updateCargo = async function (event) {
     }
 }
 
-const deleteUser = async function (event) {
+const deleteCargo = async function (event) {
     event.preventDefault();
     if (event.target.className == 'deleteBtn') {
         const targetRow = event.target.parentElement.parentElement;
-        const userId = targetRow.cells[0].innerText;
+        const cargoId = targetRow.cells[0].innerText;
         targetRow.remove();
-        const response = await fetch('/users', {
+        const response = await fetch('/cargo/delete', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             },
             body: JSON.stringify({
-                id: userId,
+                idCargo: cargoId,
             })
         });
     }
@@ -127,5 +127,5 @@ document.addEventListener('DOMContentLoaded', getAllCargos);
 form.addEventListener('click', saveAllChanges);
 form.addEventListener('click', createCargo);
 form.addEventListener('click', resetTable);
-tableBody.addEventListener('click', updateUser);
-tableBody.addEventListener('click', deleteUser);
+tableBody.addEventListener('click', updateCargo);
+tableBody.addEventListener('click', deleteCargo);

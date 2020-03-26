@@ -18,6 +18,15 @@ class CargoController {
         catch (e) {
             res.status(400).send({error:e.message});
         }
+    };
+    updateCargo = async (req, res) => {
+        try {
+            const result = await service.update(req.body);
+            res.send(result);
+        }
+        catch (e) {
+            res.status(400).send({error:e.message});
+        }
     }; 
 }
 

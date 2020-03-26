@@ -9,7 +9,13 @@ const getAll = async function () {
     return await cargo.findAll({raw: true});
 }
 
+const update = async function (body) {
+    return await cargo.update({weight: body.weight}, {where: {idCargo: body.idCargo}});
+}
+
+
 module.exports = {
     add,
     getAll,
+    update,
 }
