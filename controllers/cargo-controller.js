@@ -3,7 +3,7 @@ class CargoController {
     constructor(){};
     addCargo = async (req, res) => {
         try {
-            const result = await service.add(req.body.name, req.body.age);
+            const result = await service.add(req.body);
             res.send(result);
         }
         catch (e) {
