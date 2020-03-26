@@ -6,7 +6,7 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
     host: process.env.host,
     define: {
       timestamps: false
-    }
+    },
 });
 
 const Cargo = sequelize.define('cargo', {
@@ -20,7 +20,7 @@ const Cargo = sequelize.define('cargo', {
       type: Sequelize.STRING,
       allowNull: false,
     },
-  });
+});
  
 
 module.exports = Cargo

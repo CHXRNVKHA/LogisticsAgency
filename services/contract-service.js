@@ -1,4 +1,3 @@
-const fs = require('fs');
 const contract = require('../models/contracts');
 
 const add = async function (req) {
