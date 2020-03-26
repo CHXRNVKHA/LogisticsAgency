@@ -43,7 +43,7 @@ const resetTable = async function (event) {
         });
     }
 }
-const getUsers = async function () {
+/* const getUsers = async function () {
     const response = await fetch('/users', {
         method: 'GET',
         headers: {
@@ -58,20 +58,21 @@ const getUsers = async function () {
         }
     });
 }
+*/
 
 const createCargo = async function (event) {
     event.preventDefault();
     if (event.target.id === 'add') {
         const cargoWeight = this.elements['weight'].value;
         const cargoAge = this.elements['age'].value;
-        const response = await fetch('/cargo', {
+        const response = await fetch('/cargo/add', {
             method: 'POST',
+            credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             },
             body: JSON.stringify({
                 weight: cargoWeight,
-                age: cargoAge,
             })
         });
         const users = await response.json();
@@ -135,9 +136,9 @@ const saveAllChanges = async function (event) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', getUsers);
+//document.addEventListener('DOMContentLoaded', getUsers);
 form.addEventListener('click', saveAllChanges);
-form.addEventListener('click', createUser);
+form.addEventListener('click', createCargo);
 form.addEventListener('click', resetTable);
 tableBody.addEventListener('click', updateUser);
 tableBody.addEventListener('click', deleteUser);

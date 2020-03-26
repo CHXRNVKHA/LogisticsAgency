@@ -9,7 +9,7 @@ const router = new express.Router();
 //router.get('/cargos', cargoController.getCargos);
 //router.get('/:id', cargoController.getCargoById);
 //router.post('/cargos', cargoController.createCargo);
-router.post('/cargo', cargoController.addCargo);
+router.post('/add', cargoController.addCargo);
 //router.put('/', cargoController.updateCargo);
 //router.delete('/', cargoController.deleteCargo);
 //router.post('/save', cargoController.saveChanges);

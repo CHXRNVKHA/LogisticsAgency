@@ -10,7 +10,7 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
 });
 
 const Cargo = sequelize.define('cargo', {
-    id: {
+    idCargo: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,

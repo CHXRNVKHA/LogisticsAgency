@@ -1,7 +1,8 @@
 const cargo = require('../models/cargo');
 
 const add = async function (req) {
-    return  await cargo.create(req)
+    const cargoWeight = req.weight;
+    return  await cargo.create({weight: cargoWeight})
 }
 
 
