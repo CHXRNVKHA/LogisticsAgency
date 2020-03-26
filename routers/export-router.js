@@ -1,5 +1,5 @@
-const orderRouter = require('../routers/orderRouter');
+const contractRouter = require('../routers/contractRouter');
 
 module.exports = {
-    orderRouter,
+    contractRouter,
 }

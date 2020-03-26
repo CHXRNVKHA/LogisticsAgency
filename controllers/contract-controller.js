@@ -1,5 +1,5 @@
-const service = require('../services/order-service');
-class OrderController {
+const service = require('../services/contract-service');
+class ContractController {
     constructor(){};
     saveChanges = async (req, res) => {
         try {
@@ -10,44 +10,44 @@ class OrderController {
             res.status(400).send({error:e.message});
         }
     }
-    deleteOrder = async (req, res) => {
+    deleteContract = async (req, res) => {
         try {
-            const result = await service.deleteOrder(req.body.id);
+            const result = await service.deleteContract(req.body.id);
             res.send(result);
         }
         catch (e) {
             res.status(400).send({error:e.message});
         }
     }
-    updateOrder = async (req, res) => {
+    updateContract = async (req, res) => {
         try {
-            const result = await service.updateOrder(req.body.id, req.body.name, req.body.age);
+            const result = await service.updateContract(req.body.id, req.body.name, req.body.age);
             res.send(result);
         }
         catch (e) {
             res.status(400).send({error:e.message});
         }
     }
-    createOrder = async (req, res) => {
+    createContract = async (req, res) => {
         try {
-            const result = await service.createOrder(req.body.name, req.body.age);
+            const result = await service.createContract(req.body.name, req.body.age);
             res.send(result);
         }
         catch (e) {
             res.status(400).send({error:e.message});
         }
     }
-    getOrders = async (req, res) => {
+    getContracts = async (req, res) => {
         try {
-            const result = await service.getOrders();
+            const result = await service.getContracts();
             res.send(result);
         } catch (e) {
             res.status(400).send({error:e.message});
         }
     }
-    getOrderById = async (req, res) => {
+    getContractById = async (req, res) => {
         try {
-            const result = await service.getOrderById(req.params.id);
+            const result = await service.getContractById(req.params.id);
             res.send(result);
         } catch (e) {
             res.status(400).send({error:e.message});
@@ -55,4 +55,4 @@ class OrderController {
     }
 }
 
-module.exports = OrderController;
+module.exports = ContractController;
