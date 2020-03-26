@@ -97,7 +97,7 @@ const deleteCargo = async function (event) {
         const targetRow = event.target.parentElement.parentElement;
         const cargoId = targetRow.cells[0].innerText;
         targetRow.remove();
-        const response = await fetch('/cargo/delete', {
+        const response = await fetch('/cargo/delete/:id', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'

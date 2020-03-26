@@ -27,6 +27,15 @@ class CargoController {
         catch (e) {
             res.status(400).send({error:e.message});
         }
+    };
+    deleteCargo = async (req, res) => {
+        try {
+            const result = await service.del(req.body);
+            res.send(result);
+        }
+        catch (e) {
+            res.status(400).send({error:e.message});
+        }
     }; 
 }
 
