@@ -11,11 +11,10 @@ const createButton = function (inText, className) {
     btn.className = className;
     return btn;
 }
-const addTableRow = function (id, name, age = 1, tBody) {
+const addTableRow = function (id, weight, tBody) {
     const row = document.createElement('tr');
     const idCol = document.createElement('th');
-    const nameCol = document.createElement('th');
-    const ageCol = document.createElement('th');
+    const weightCol = document.createElement('th');
     const updateCol = document.createElement('th');
     const deleteCol = document.createElement('th');
     const updateBtn = createButton(defUpdateBtnText, 'updateBtn');
@@ -23,11 +22,9 @@ const addTableRow = function (id, name, age = 1, tBody) {
     updateCol.appendChild(updateBtn);
     deleteCol.appendChild(deleteBtn);
     idCol.innerText = id;
-    nameCol.innerText = name;
-    ageCol.innerText = age;
+    weightCol.innerText = weight;
     row.appendChild(idCol);
-    row.appendChild(nameCol);
-    row.appendChild(ageCol);
+    row.appendChild(weightCol);
     row.appendChild(updateCol);
     row.appendChild(deleteCol);
     tBody.appendChild(row);
@@ -43,28 +40,22 @@ const resetTable = async function (event) {
         });
     }
 }
-/* const getUsers = async function () {
-    const response = await fetch('/users', {
+const getAllCargos = async function () {
+    const response = await fetch('/cargo', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json; charset=utf-8',
         }
     });
-    const users = await response.json();
-    usersTempStorage = users;
-    users.forEach(element => {
-        if (element.deleteAt === null) {
-            addTableRow(element.id, element.name, element.age, tableBody);
-        }
+    const cargos = await response.json();
+    cargos.forEach(element => {
+        addTableRow(element.idCargo, element.weight, tableBody);
     });
 }
-*/
-
 const createCargo = async function (event) {
     event.preventDefault();
     if (event.target.id === 'add') {
         const cargoWeight = this.elements['weight'].value;
-        const cargoAge = this.elements['age'].value;
         const response = await fetch('/cargo/add', {
             method: 'POST',
             credentials: 'same-origin',
@@ -75,30 +66,26 @@ const createCargo = async function (event) {
                 weight: cargoWeight,
             })
         });
-        const users = await response.json();
-        const lastUser = users[users.length - 1];
-        addTableRow(lastUser.id, lastUser.name, lastUser.age, tableBody);
+        const cargo = await response.json();
+        addTableRow(cargo.idCargo, cargo.weight, tableBody);
     }
 }
 
-const updateUser = async function (event) {
+const updateCargo = async function (event) {
     event.preventDefault();
     if (event.target.className == 'updateBtn') {
         const targetRow = event.target.parentElement.parentElement;
-        const userName = form.elements['name'].value;
-        const userAge = form.elements['age'].value;
-        const userId = targetRow.cells[0].innerText;
-        targetRow.cells[1].innerText = userName;
-        targetRow.cells[2].innerText = userAge;
-        const response = await fetch('/users', {
+        const cargoWeight = form.elements['weight'].value;
+        const cargoId = targetRow.cells[0].innerText;
+        targetRow.cells[1].innerText = cargoWeight;
+        const response = await fetch('/cargo/edit', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             },
             body: JSON.stringify({
-                id: userId,
-                name: userName,
-                age: userAge,
+                idCargo: cargoId,
+                weight: cargoWeight,
             })
         });
     }
@@ -136,7 +123,7 @@ const saveAllChanges = async function (event) {
     }
 }
 
-//document.addEventListener('DOMContentLoaded', getUsers);
+document.addEventListener('DOMContentLoaded', getAllCargos);
 form.addEventListener('click', saveAllChanges);
 form.addEventListener('click', createCargo);
 form.addEventListener('click', resetTable);

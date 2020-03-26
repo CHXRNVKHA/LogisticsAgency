@@ -5,7 +5,7 @@ const cargoController = new CargoController();
 
 const router = new express.Router();
 
-//router.get('/', cargoController.getCargos);
+router.get('/', cargoController.getAllCargos);
 //router.get('/cargos', cargoController.getCargos);
 //router.get('/:id', cargoController.getCargoById);
 //router.post('/cargos', cargoController.createCargo);
