@@ -7,7 +7,7 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
     define: {
       timestamps: false
     }
-  });
+});
 
 const Contract = sequelize.define('contract', {
     id: {
