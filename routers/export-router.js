@@ -1,4 +1,4 @@
-const contractRouter = require('../routers/contractRouter');
+const contractRouter = require('../routers/contract-router');
 const cargoRouter = require('../routers/cargo-router');
 
 module.exports = {
