@@ -11,7 +11,7 @@ const createButton = function (inText, className) {
     btn.className = className;
     return btn;
 }
-const addTableRow = function (id, name, age, tBody) {
+const addTableRow = function (id, name, age = 1, tBody) {
     const row = document.createElement('tr');
     const idCol = document.createElement('th');
     const nameCol = document.createElement('th');
@@ -59,19 +59,19 @@ const getUsers = async function () {
     });
 }
 
-const createUser = async function (event) {
+const createCargo = async function (event) {
     event.preventDefault();
     if (event.target.id === 'add') {
-        const userName = this.elements['name'].value;
-        const userAge = this.elements['age'].value;
-        const response = await fetch('/users', {
+        const cargoWeight = this.elements['weight'].value;
+        const cargoAge = this.elements['age'].value;
+        const response = await fetch('/cargo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             },
             body: JSON.stringify({
-                name: userName,
-                age: userAge,
+                weight: cargoWeight,
+                age: cargoAge,
             })
         });
         const users = await response.json();
