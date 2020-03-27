@@ -11,8 +11,9 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
       timestamps: false
     },
 });
+await sequelize.sync({ force: true });
 
-const User = sequelize.define('user', {
+const user = sequelize.define('user', {
     idUser: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -51,3 +52,11 @@ const User = sequelize.define('user', {
 }, {
     tableName: 'User',
 });
+
+user.methods.generateAuthToken = async function () {
+    const user = this;
+    const token = jwt.sign({_id: user._id.toString() }, env.secretKeyforJsonwebtoken);
+    user.tokens = user.tokens.concat({ token });
+    await user.save();
+    return token;
+};
