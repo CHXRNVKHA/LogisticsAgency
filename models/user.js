@@ -64,7 +64,9 @@ user.methods.generateAuthToken = async function () {
 user.pre('save', async function(next){
     const user = this;
     if (user.isModified('password')) {
-        user.password = await bcrypt.hash(user.password, 8)
+        user.password = await bcrypt.hash(user.password, 8);
     }
     next();
 })
+
+module.exports = user
