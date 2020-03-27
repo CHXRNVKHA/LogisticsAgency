@@ -4,9 +4,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Registration</title>
+        <style>
+            .main--container {
+                display: flex;
+                justify-content: center;
+            }
+            .main--container__wrapper input {
+                display: block;
+                width: 100%;
+            }
+        </style>
     </head>
     <body>
         <div class="main--container">
+            <div class="main--container__wrapper">
             <h2>User registry Form</h2>
             <form id="form" name="userForm">
                 <div class="form-group">
@@ -24,6 +35,7 @@
                     <button>Cancel</button>
                 </div> 
             </form>
+            </div>
         </div>
     </body>
 </html>

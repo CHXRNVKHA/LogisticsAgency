@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.static(__dirname + '/pages'));
 //app.use('/', router.pageRouter);
 app.use('/cargo', router.cargoRouter);
+app.use('/registry', router.pagesRouter);
 
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
