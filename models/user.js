@@ -11,7 +11,6 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
       timestamps: false
     },
 });
-await sequelize.sync({ force: true });
 
 const User = sequelize.define('user', {
     idUser: {
@@ -43,30 +42,21 @@ const User = sequelize.define('user', {
         allowNull: false,
         defaultValue: 'user',
     },
-    tokens: [{
-        token: {
-            type: Sequelize.STRING,
-            allowNull: false,
-        }
-    }],
 }, {
     tableName: 'User',
 });
 
-User.methods.generateAuthToken = async function () {
+User.generateAuthToken = async function () {
     const user = this;
-    const token = jwt.sign({_id: user._id.toString() }, process.env.secretKeyforJsonwebtoken);
-    user.tokens = user.tokens.concat({ token });
-    await user.save();
+    const token = jwt.sign({_id: user._id.toString() }, process.env.secretKeyforJsonwebtoken, {
+        expiresIn: 86400
+    });
     return token;
 };
 
-User.pre('save', async function(next){
+User.addHook('beforeSave', async function(){
     const user = this;
-    if (user.isModified('password')) {
-        user.password = await bcrypt.hash(user.password, 8);
-    }
-    next();
+    user.password = await bcrypt.hash(user.password, 8);
 })
 
 module.exports = User
