@@ -12,6 +12,7 @@ app.use('/registry', express.static(path.join(__dirname, 'pages', 'registration'
 //app.use('/', router.pageRouter);
 app.use('/cargo', router.cargoRouter);
 app.use('/registry', router.pagesRouter);
+app.use('/user', router.userRouter);
 
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);

@@ -7,8 +7,8 @@ const add = async function (req) {
     const password = req.password;
     const user = new User(req.body);
     await user.save();
-    const token = user.generateAuthToken();
-    return {user, token};
+    user.token = user.generateAuthToken();
+    return user;
 };
 
 module.exports = {

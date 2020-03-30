@@ -1,10 +1,12 @@
 const form = document.querySelector('#form');
 
+const defTokenName = 'logisticsAgencyToken';
+
 const mainListener = function(e) {
-  event.preventDefault();
+  e.preventDefault();
   switch (e.target.name) {
     case 'submit':
-      createUser(e);
+      createUser(e, form);
       break;
 
     default:
@@ -12,12 +14,12 @@ const mainListener = function(e) {
   }
 };
 
-const createUser = async function(e) {
-  event.preventDefault();
-  const userName = this.elements['name'].value;
-  const userSurname = this.elements['surname'].value;
-  const userLogin = this.elements['login'].value;
-  const userPassword = this.elements['password'].value;
+const createUser = async function(e, form) {
+  e.preventDefault();
+  const userName = form.elements['name'].value;
+  const userSurname = form.elements['surname'].value;
+  const userLogin = form.elements['login'].value;
+  const userPassword = form.elements['password'].value;
   const response = await fetch('/user/add', {
     method: 'POST',
     credentials: 'same-origin',
@@ -32,6 +34,7 @@ const createUser = async function(e) {
     })
   });
   const user = await response.json();
+  localStorage.setItem(defTokenName, user.token);
 };
 
 form.addEventListener('click', mainListener);
