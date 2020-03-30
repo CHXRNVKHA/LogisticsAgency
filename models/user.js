@@ -13,7 +13,7 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
 });
 await sequelize.sync({ force: true });
 
-const user = sequelize.define('user', {
+const User = sequelize.define('user', {
     idUser: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -53,7 +53,7 @@ const user = sequelize.define('user', {
     tableName: 'User',
 });
 
-user.methods.generateAuthToken = async function () {
+User.methods.generateAuthToken = async function () {
     const user = this;
     const token = jwt.sign({_id: user._id.toString() }, process.env.secretKeyforJsonwebtoken);
     user.tokens = user.tokens.concat({ token });
@@ -61,7 +61,7 @@ user.methods.generateAuthToken = async function () {
     return token;
 };
 
-user.pre('save', async function(next){
+User.pre('save', async function(next){
     const user = this;
     if (user.isModified('password')) {
         user.password = await bcrypt.hash(user.password, 8);
@@ -69,4 +69,4 @@ user.pre('save', async function(next){
     next();
 })
 
-module.exports = user
+module.exports = User

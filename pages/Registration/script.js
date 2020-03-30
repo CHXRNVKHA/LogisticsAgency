@@ -4,6 +4,7 @@ const mainListener = function(e) {
   event.preventDefault();
   switch (e.target.name) {
     case 'submit':
+      createUser(e);
       break;
 
     default:
