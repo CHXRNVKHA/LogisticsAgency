@@ -1,6 +1,7 @@
 const form = document.querySelector('#form');
 
 const defTokenName = 'logisticsAgencyToken';
+const defUserRoleName = 'user';
 
 const mainListener = function(e) {
   e.preventDefault();
@@ -31,6 +32,7 @@ const createUser = async function(e, form) {
       surname: userSurname,
       login: userLogin,
       password: userPassword,
+      role: defUserRoleName,
     })
   });
   const user = await response.json();

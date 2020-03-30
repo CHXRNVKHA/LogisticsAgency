@@ -1,13 +1,19 @@
-const cargo = require('../models/user');
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const add = async function (req) {
-    const name = req.name;
-    const surname = req.surname;
-    const login = req.login;
-    const password = req.password;
-    const user = new User(req.body);
-    await user.save();
-    user.token = user.generateAuthToken();
+    user = await User.create({
+        login: req.login,
+        name: req.name,
+        surname: req.surname,
+        password: bcrypt.hashSync(req.password, 8),
+        role: req.role,
+    })
+    const tok = jwt.sign({id: user.idUser.toString() }, process.env.secretKeyforJsonwebtoken, {
+        expiresIn: 86400
+    });
+    user.token = tok;
     return user;
 };
 
