@@ -9,9 +9,11 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use('/', express.static(path.join(__dirname, 'pages', 'main')));
 app.use('/registry', express.static(path.join(__dirname, 'pages', 'registration')));
+app.use('/login', express.static(path.join(__dirname, 'pages', 'signIn')));
 //app.use('/', router.pageRouter);
 app.use('/cargo', router.cargoRouter);
 app.use('/registry', router.pagesRouter);
+app.use('/login', router.pagesRouter)
 app.use('/user', router.userRouter);
 
 app.listen(port, hostname, () => {

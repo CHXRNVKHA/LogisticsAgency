@@ -1,7 +1,5 @@
 const form = document.querySelector('#form');
 
-const defUserRoleName = 'user';
-
 const mainListener = function(e) {
   e.preventDefault();
   switch (e.target.name) {
@@ -14,26 +12,23 @@ const mainListener = function(e) {
   }
 };
 
-const createUser = async function(e, form) {
+const loginUser = async function(e, form) {
   e.preventDefault();
-  const userName = form.elements['name'].value;
-  const userSurname = form.elements['surname'].value;
   const userLogin = form.elements['login'].value;
   const userPassword = form.elements['password'].value;
-  const response = await fetch('/user/add', {
+  const response = await fetch('/user/login', {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
     },
     body: JSON.stringify({
-      name: userName,
-      surname: userSurname,
       login: userLogin,
       password: userPassword,
-      role: defUserRoleName,
     })
   });
+  const user = await response.json();
+  localStorage.setItem(defTokenName, user.accessToken);
 };
 
 form.addEventListener('click', mainListener);

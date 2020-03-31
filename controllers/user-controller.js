@@ -10,6 +10,15 @@ class UserController {
             res.status(400).send({error:e.message});
         }
     };
+    loginUser = async (req, res) => {
+        try {
+            const result = await service.login(req.body);
+            res.send(result);
+        }
+        catch (e) {
+            res.status(400).send({error:e.message});
+        }
+    }
 }
 
 module.exports = UserController;
