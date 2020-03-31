@@ -34,6 +34,7 @@ const createUser = async function(e, form) {
       role: defUserRoleName,
     })
   });
+  if (response.status == 400) alert(response);
 };
 
 form.addEventListener('click', mainListener);

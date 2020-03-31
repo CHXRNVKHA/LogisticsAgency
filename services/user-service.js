@@ -29,8 +29,7 @@ const login = async function (req) {
     const token = jwt.sign({id: user.idUser.toString() }, process.env.secretKeyforJsonwebtoken, {
         expiresIn: 86400
     });
-    user.accessToken = token;
-    return user;
+    return { user, token };
 }
 
 module.exports = {

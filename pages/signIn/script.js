@@ -1,10 +1,12 @@
 const form = document.querySelector('#form');
 
+const defTokenName = 'userToken';
+
 const mainListener = function(e) {
   e.preventDefault();
   switch (e.target.name) {
     case 'submit':
-      createUser(e, form);
+      loginUser(e, form);
       break;
 
     default:
@@ -16,11 +18,11 @@ const loginUser = async function(e, form) {
   e.preventDefault();
   const userLogin = form.elements['login'].value;
   const userPassword = form.elements['password'].value;
-  const response = await fetch('/user/login', {
+  let response = await fetch('/user/login', {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
-      'Content-Type': 'application/json; charset=utf-8',
+        'Content-Type': 'application/json; charset=utf-8',
     },
     body: JSON.stringify({
       login: userLogin,
@@ -28,7 +30,15 @@ const loginUser = async function(e, form) {
     })
   });
   const user = await response.json();
-  localStorage.setItem(defTokenName, user.accessToken);
+  localStorage.setItem(defTokenName, user.token);
+  response = await fetch ('pages/main', {
+    method: 'GET',
+    credentials: 'same-origin',
+    headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'x-access-token': user.token,
+    },
+  });
 };
 
 form.addEventListener('click', mainListener);
