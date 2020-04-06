@@ -3,7 +3,7 @@ const User = require('../models/user');
 const checkDuplicateUsernameOrEmail = async (req, res, next) => {
     const user = await User.findOne({
       where: {
-        name: req.body.name
+        login: req.body.login
       }
     });
     if (user) {

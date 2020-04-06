@@ -12,6 +12,7 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
     },
 });
 
+
 const User = sequelize.define('user', {
     idUser: {
       type: Sequelize.INTEGER,

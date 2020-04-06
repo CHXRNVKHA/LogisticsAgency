@@ -1,9 +1,12 @@
 const service = require('../services/user-service');
+const userValidateShema = require('../validate/user-shema');
+
 class UserController {
     constructor(){};
     addUser = async (req, res) => {
         try {
-            const result = await service.add(req.body);
+            const value = await userValidateShema.validateAsync(req.body);
+            const result = await service.add(value);
             res.send(result);
         }
         catch (e) {
