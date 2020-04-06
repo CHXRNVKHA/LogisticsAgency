@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/WonderXuy/LogisticsAgency#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
