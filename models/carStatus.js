@@ -1,6 +1,6 @@
 const conn = require('./connection');
 const { DataTypes } = require('sequelize');
-const repairLogs = require('./repairLog');
+const repairLog = require('./repairLog');
 
 const CarStatus = conn.define('carStatus', {
     id: {
