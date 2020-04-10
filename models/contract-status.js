@@ -18,11 +18,11 @@ const ContractStatus = conn.define('contractStatus', {
       allowNull: false,
     },
     passedTime: {
-      type: DataTypes.DATETIME,
+      type: DataTypes.DATE,
         allowNull: false,
     },
     leftTime: {
-      type: DataTypes.DATETIME,
+      type: DataTypes.DATE,
       allowNull: false,
     },
 }, {

@@ -10,7 +10,7 @@ const Path = conn.define('path', {
       allowNull: false,
     },
     deadLine: {
-      type: DataTypes.DATETIME,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     distance: {

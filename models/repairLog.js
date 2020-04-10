@@ -10,11 +10,11 @@ const RepairLog = conn.define('repairLog', {
       allowNull: false,
     },
     breakdownTime: {
-      type: DataTypes.DATETIME,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     fixDate: {
-      type: DataTypes.DATETIME,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     describe: {
