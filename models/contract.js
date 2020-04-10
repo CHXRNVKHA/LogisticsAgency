@@ -2,20 +2,20 @@ const conn = require('./connection');
 const Sequelize = require('sequelize');
 
 
-const Cargo = conn.define('cargo', {
-    idCargo: {
+const Contract = conn.define('contract', {
+    id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
-    weight: {
+    name: {
       type: Sequelize.STRING,
       allowNull: false,
-    },
-}, {
-  tableName: 'Cargo',
+    }
+  }, {
+    tableName: 'Contract',
 });
  
 
-module.exports = Cargo
+module.exports = Contract

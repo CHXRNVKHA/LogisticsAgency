@@ -1,4 +1,5 @@
 const conn = require('./connection');
+const contract = require('./contract')
 const Sequelize = require('sequelize');
 
 
@@ -34,5 +35,7 @@ const User = conn.define('user', {
 }, {
     tableName: 'User',
 });
+
+User.hasMany(contract, { onDelete: 'cascade', onUpdate: 'cascade' });
 
 module.exports = User

@@ -13,11 +13,13 @@ app.use('/', express.static(path.join(__dirname, 'pages', 'signIn')));
 app.use('/login', express.static(path.join(__dirname, 'pages', 'signIn')));
 app.use('/main', auth, express.static(path.join(__dirname, 'pages', 'main')));
 app.use('/registry', express.static(path.join(__dirname, 'pages', 'registration')));
-app.use('/cargo', router.cargoRouter);
 app.use('/registry', async (req, res) => {
     await res.sendFile(path.join(__dirname, 'pages', 'registration', 'index.html'));
 })
+
+app.use('/cargo', router.cargoRouter);
 app.use('/user', router.userRouter);
+app.use('/contract', router.contractRouter);
 
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
