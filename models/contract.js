@@ -4,6 +4,7 @@ const path = require('./path');
 const contractStatus = require('./contract-status');
 const driver = require('./driver');
 const bill = require('./bill');
+const customer = require('./customer');
 
 
 const Contract = conn.define('contract', {
@@ -25,5 +26,6 @@ Contract.hasOne(path, { onDelete: 'cascade', onUpdate: 'cascade' });
 Contract.hasOne(contractStatus, { onDelete: 'cascade', onUpdate: 'cascade' });
 Contract.hasOne(driver, { onDelete: 'cascade', onUpdate: 'cascade' });
 Contract.hasOne(bill, { onDelete: 'cascade', onUpdate: 'cascade' });
+Contract.hasOne(customer, { onDelete: 'cascade', onUpdate: 'cascade' });
 
 module.exports = Contract
