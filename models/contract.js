@@ -1,5 +1,6 @@
 const conn = require('./connection');
 const Sequelize = require('sequelize');
+const path = require('./path');
 
 
 const Contract = conn.define('contract', {
@@ -17,5 +18,6 @@ const Contract = conn.define('contract', {
     tableName: 'Contract',
 });
  
+Contract.hasOne(path, { onDelete: 'cascade', onUpdate: 'cascade' });
 
 module.exports = Contract
