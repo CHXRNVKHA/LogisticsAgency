@@ -1,19 +1,8 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const conn = require('./connection');
 const Sequelize = require('sequelize');
 
-require('dotenv').config();
 
-const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
-    dialect: 'mysql',
-    host: process.env.host,
-    define: {
-      timestamps: false
-    },
-});
-
-
-const User = sequelize.define('user', {
+const User = conn.define('user', {
     idUser: {
       type: Sequelize.INTEGER,
       autoIncrement: true,

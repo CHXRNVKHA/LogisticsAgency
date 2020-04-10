@@ -1,15 +1,8 @@
+const conn = require('./connection');
 const Sequelize = require('sequelize');
-require('dotenv').config();
 
-const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
-    dialect: 'mysql',
-    host: process.env.host,
-    define: {
-      timestamps: false
-    }
-});
 
-const Contract = sequelize.define('contract', {
+const Contract = conn.define('contracts', {
     id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
