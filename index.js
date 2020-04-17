@@ -17,6 +17,8 @@ app.use('/registry', async (req, res) => {
     await res.sendFile(path.join(__dirname, 'pages', 'registration', 'index.html'));
 })
 
+app.use('/upload', express.static(path.join(__dirname, 'uploads')));
+
 app.use('/cargo', router.cargoRouter);
 app.use('/user', router.userRouter);
 app.use('/contract', router.contractRouter);
