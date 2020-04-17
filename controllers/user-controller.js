@@ -22,6 +22,7 @@ class UserController {
             res.status(400).send({error:e.message});
         }
     }
+    setAvatar
 }
 
 module.exports = UserController;

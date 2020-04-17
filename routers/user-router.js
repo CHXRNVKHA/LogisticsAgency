@@ -1,6 +1,7 @@
 const express = require('express');
-const auth = require('../middleware/auth');
+const upload = require('../middleware/upload');
 const verifySignUp = require('../middleware/verifySignUp');
+
 
 const UserController = require('../controllers/user-controller')
 const userController = new UserController();
