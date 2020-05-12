@@ -1,7 +1,7 @@
 const contract = require('../models/contract');
 
 const add = async function (req) {
-    return  await req.user.createContract(req.body);
+    return  await contract.create(req.body);
 }
 
 

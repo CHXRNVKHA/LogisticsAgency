@@ -10,7 +10,7 @@ const router = new express.Router();
 
 //router.get('/', userController.getAllusers);
 router.post('/add', verifySignUp.checkDuplicateUsernameOrEmail, userController.addUser);
-router.post('/upload', upload, userController.setAvatar);
+//router.post('/upload', upload, userController.setAvatar);
 router.post('/login', userController.loginUser);
 //router.delete('/delete/:id', userController.deleteuser);
 

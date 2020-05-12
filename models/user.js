@@ -36,6 +36,6 @@ const User = conn.define('user', {
     tableName: 'User',
 });
 
-User.hasMany(contract, { onDelete: 'cascade', onUpdate: 'cascade' });
+//User.hasMany(contract, { onDelete: 'cascade', onUpdate: 'cascade' });
 
 module.exports = User

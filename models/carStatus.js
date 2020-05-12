@@ -17,6 +17,6 @@ const CarStatus = conn.define('carStatus', {
   tableName: 'CarStatus',
 });
 
-CarStatus.hasOne(repairLog, { onDelete: 'cascade', onUpdate: 'cascade' });
+//CarStatus.hasOne(repairLog, { onDelete: 'cascade', onUpdate: 'cascade' });
 
 module.exports = CarStatus

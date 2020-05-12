@@ -21,6 +21,6 @@ const Customer = conn.define('customer', {
   tableName: 'Customer',
 });
 
-Customer.hasOne(company, { onDelete: 'cascade', onUpdate: 'cascade' });
+//Customer.hasOne(company, { onDelete: 'cascade', onUpdate: 'cascade' });
 
 module.exports = Customer

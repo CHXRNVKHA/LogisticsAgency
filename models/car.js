@@ -22,8 +22,8 @@ const Car = conn.define('car', {
   tableName: 'Car',
 });
 
-Car.hasOne(carStatus, { onDelete: 'cascade', onUpdate: 'cascade' });
-Car.hasOne(carRegistyInf, { onDelete: 'cascade', onUpdate: 'cascade' });
+//Car.hasOne(carStatus, { onDelete: 'cascade', onUpdate: 'cascade' });
+//Car.hasOne(carRegistyInf, { onDelete: 'cascade', onUpdate: 'cascade' });
  
 
 module.exports = Car

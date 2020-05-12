@@ -26,6 +26,6 @@ const Bill = conn.define('bill', {
   tableName: 'Bill',
 });
 
-Bill.hasOne(price, { onDelete: 'cascade', onUpdate: 'cascade' });
+//Bill.hasOne(price, { onDelete: 'cascade', onUpdate: 'cascade' });
 
 module.exports = Bill
